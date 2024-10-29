@@ -1,7 +1,4 @@
 #  Overview: 
-
-* Contains Jupyter notebooks used to analyze Blancco erasure reports
-
 ### 1. `drives_wiped_sucessfully_multiple_times.ipynb`
    - **Purpose**: To analyze the total number of drives that have been wiped successfully more than once over time, specifically grouped by month to test hypothesis
    - **Hypothesis**: The number of drives wiped unnecessarily (successfully wiped more than once) will decrease over time, particularly after the implementation of new guards.
