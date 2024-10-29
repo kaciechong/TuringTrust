@@ -4,10 +4,10 @@
 * Purpose: To develop MongoDB queries to analyze over 20,000+ hardware erasure reports. By examining past records and trends in device erasure, I seek to optimize erasure processes, constituting a significant portion of the company's operations. 
 
 * Tech Used:
-  •	Databases: MongoDB (NoSQL)
-	•	Data Formats: JSON
-	•	Visualization Tools: MongoDB Charts, R 
-	•	Development Environments: Jupyter Notebooks, MongoDB Compass
+  - Databases: MongoDB (NoSQL)
+  - Data Formats: JSON
+  - Visualization Tools: MongoDB Charts, R
+  - Development Environments: Jupyter Notebooks, MongoDB Compass
 
 ## Folder Structure: 
 1. Data: Instructions for accessing the data cluster as a database user (via connection IP address)
