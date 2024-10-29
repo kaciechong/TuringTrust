@@ -14,7 +14,6 @@
    - Contains Blancco data erasure reports saved in JSON format
 3. MongoDB Queries: Jupyter Notebook files for data analysis, including queries written in Jupyter Notebook and/or MongoDB Compass
 4. Visualizations: Data visualizations generated using MongoDB Charts or R.
-5. Report: Final reports summarizing data analysis with recommendations for the company
 
 ## [Final Analysis Report](link)
 
