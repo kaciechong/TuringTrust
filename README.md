@@ -15,6 +15,7 @@
 3. MongoDB Queries: Jupyter Notebook files for data analysis, including queries written in Jupyter Notebook and/or MongoDB Compass
 4. Visualizations: Data visualizations generated using MongoDB Charts or R.
 
-## [Final Analysis Report](link) (work in progress - see 'MongoDB Queries' folder for current work)
+## [Final Analysis Report](link) 
+- (work in progress - see 'MongoDB Queries' folder for current work)
 
 
