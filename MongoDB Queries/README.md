@@ -23,6 +23,23 @@
    - **Purpose**: To find the long-term average erasure elapsed times of successfully wiped drives to know how much of the operational time goes toward wiping devices (related to query #2)
    - **Findings**: Across all months, it takes an average of **1 hour and 16 minutes** to successfully wipe a drive.
 
+### 3. `erasure_rate_by_interface_success.ipynb`
+   - **Purpose**: To find the average erasure rate (gb/minute) for each interface type to find which interface types have the most efficient erasure times.
+   - **Findings**: There is a **noticeable decrease over time in number of drives wiped unnecessarily**, with no month in 2024 with more than 10 drives wiped unnecessarily.
+   - **Further Investigation**: Investigate if the reason there are still unnecessary wipes could likely be due to mistyping the asset ID – when an asset ID is mistyped, it must be re-erased.
+   - **Model**: [MongoDB Charts](https://charts.mongodb.com/charts-project-0-beoqpwb/dashboards/66ed6f58-5025-4323-87af-e63522a514c5/charts/e3607c90-2655-4847-800e-0840140d5fcc)
+   - 
+Insight: don’t get significantly better erasure performance compared to device/drives
+Insight: When we look at specific examples of SATA/SSD, write speed is substantially lower than the manufacturer’s advertised write speed → recommendation: investigate that further because we can speed up → delve into hardware specs, develop test rid, support ticket with Blancco
+Real:
+5.188 GB/min
+Advertised:
+Write-up: 19.92 GB/min
+Read-up: 31.64 GB/min
+Reviewed “Erasure time vs capacity scatter plot” on MongoDB Charts, specifically looking at SATA/SSD
+Real erasure rates are less than advertised
+
+
 ### 4. `erasure_time_vs_capacity_for_success.ipynb`
    - **Purpose**: To find the erasure rate (gb/minute) for each interface type, while also being able to look at each drive individually through the disk's serial number and model of only successfully wiped devices.
    - **Goal**: To find general trends in which interface types have the most efficient erasure times.
@@ -49,7 +66,7 @@ Use MongoDB Charts to create scatter plots and box plots for visual representati
 Review the "Erasure Time vs Capacity" scatter plot in MongoDB Charts specifically for SATA/SSD drives to better understand performance trends and anomalies.
 
 
-Query: What’s the average erasure time for a specific interface type? (look at each drive individually)
+ook at each drive individually)
 Avg erasure time vs interface type + capacity
 LOOK AT EACH DISK INDIVIDUALLY
 IS ERASURE TIME BASED ON DISK SPEED OR DEVICE SPEED
