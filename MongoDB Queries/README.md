@@ -23,62 +23,35 @@
    - **Purpose**: To find the long-term average erasure elapsed times of successfully wiped drives to know how much of the operational time goes toward wiping devices (related to query #2)
    - **Findings**: Across all months, it takes an average of **1 hour and 16 minutes** to successfully wipe a drive.
 
-### 3. `erasure_rate_by_interface_success.ipynb`
+### 4. `erasure_rate_by_interface_success.ipynb`
    - **Purpose**: To find the average erasure rate (gb/minute) for each interface type to find which interface types have the most efficient erasure times.
-   - **Findings**: There is a **noticeable decrease over time in number of drives wiped unnecessarily**, with no month in 2024 with more than 10 drives wiped unnecessarily.
-   - **Further Investigation**: Investigate if the reason there are still unnecessary wipes could likely be due to mistyping the asset ID – when an asset ID is mistyped, it must be re-erased.
+   - **Findings**:
+     - NVMe drives exhibit a significantly higher average erasure rate (about 110 GB/min), making them the fastest option by a large margin.
+     - SAS drives have the second-highest erasure rate, though it is much lower than NVMe.
+     - SATA, USB, and SSD interfaces (e.g., SATA/SSD) show relatively low erasure rates. For example, SATA drives are barely above USB and IDE in speed. These interfaces are not ideal for high-speed operations and could be de-prioritized in tasks where faster completion is a priority.
+   - **Recommendations**:
+     - Prioritize NVMe and SAS Drives: Focus on these high-throughput drives during peak operational times for faster turnaround.
+     - Infrastructure for High-Speed Interfaces: Invest in equipment specifically optimized for NVMe and SAS drives to fully utilize their higher erasure rates.
+     - Consider whether it’s cost-effective to continue handling extremely slow interfaces like IDE and USB
+   - **Further Investigation**: The average erasure rate for **SATA/SSD** is substantially lower than the manufacturer’s advertised write speed. Investigate further if the slow rates are due to outliers by creating a scatter plot that looks at each drive individually; We can observe the scatter plot to see if most SATA/SSD data points are actually clustered at lower rates
+   - Real Average for SATA/SSD: 5.188 GB/min
+   - Advertised:
+     - Write-up: 19.92 GB/min
+     - Read-up: 31.64 GB/min
    - **Model**: [MongoDB Charts](https://charts.mongodb.com/charts-project-0-beoqpwb/dashboards/66ed6f58-5025-4323-87af-e63522a514c5/charts/e3607c90-2655-4847-800e-0840140d5fcc)
-   - 
-Insight: don’t get significantly better erasure performance compared to device/drives
-Insight: When we look at specific examples of SATA/SSD, write speed is substantially lower than the manufacturer’s advertised write speed → recommendation: investigate that further because we can speed up → delve into hardware specs, develop test rid, support ticket with Blancco
-Real:
-5.188 GB/min
-Advertised:
-Write-up: 19.92 GB/min
-Read-up: 31.64 GB/min
-Reviewed “Erasure time vs capacity scatter plot” on MongoDB Charts, specifically looking at SATA/SSD
-Real erasure rates are less than advertised
 
-
-### 4. `erasure_time_vs_capacity_for_success.ipynb`
-   - **Purpose**: To find the erasure rate (gb/minute) for each interface type, while also being able to look at each drive individually through the disk's serial number and model of only successfully wiped devices.
-   - **Goal**: To find general trends in which interface types have the most efficient erasure times.
-   - **Findings**: There is a **noticeable decrease over time in number of drives wiped unnecessarily**, with no month in 2024 with more than 10 drives wiped unnecessarily.
-   - **Further Investigation**: Investigate if the reason there are still unnecessary wipes could likely be due to mistyping the asset ID – when an asset ID is mistyped, it must be re-erased.
+### 5. `erasure_time_vs_capacity_for_success.ipynb`
+   - **Purpose**: To find the erasure rate (gb/minute) for each interface type, while also being able to look at each drive individually through the disk's serial number and model of only successfully wiped devices. Through this, we can see if the slow rates in SATA/SSD drives are due to outliers or not (in reference to query 4).
+   - **Findings**: 
+   - **Further Investigation**: 
    - **Model**: [MongoDB Charts]()
-
-
- 
-When examining the performance of SATA and SSD drives, the real-world erasure performance does not significantly improve compared to device specifications.
-
+     
 Comparative Results: Real-world erasure rates for SATA drives are notably lower than the manufacturer’s advertised speeds:
-
-Real Erasure Rate: 5.188 GB/min
-Advertised Write Speed: 19.92 GB/min
-Advertised Read Speed: 31.64 GB/min
-Potential Investigation Areas: The substantial discrepancy between real and advertised write speeds suggests a need for further investigation into:
-
 Hardware specifications.
 Development of a test rig to replicate conditions.
 Supporting ticket submissions to Blancco for additional insights.
 Visualization and Documentation
 Use MongoDB Charts to create scatter plots and box plots for visual representation of the erasure times versus capacity for different interface types.
 Review the "Erasure Time vs Capacity" scatter plot in MongoDB Charts specifically for SATA/SSD drives to better understand performance trends and anomalies.
-
-
-ook at each drive individually)
-Avg erasure time vs interface type + capacity
-LOOK AT EACH DISK INDIVIDUALLY
-IS ERASURE TIME BASED ON DISK SPEED OR DEVICE SPEED
-Gb per min (capacity/elapsed time) – group by interface to find avg erasure rate for each interface
-Erasure rates vs. interface type: Computed manually 2 drives (SATA) to check box plot results
-Insight: don’t get significantly better erasure performance compared to device/drives
 Insight: When we look at specific examples of SATA/SSD, write speed is substantially lower than the manufacturer’s advertised write speed → recommendation: investigate that further because we can speed up → delve into hardware specs, develop test rid, support ticket with Blancco
-Real:
-5.188 GB/min
-Advertised:
-Write-up: 19.92 GB/min
-Read-up: 31.64 GB/min
-Reviewed “Erasure time vs capacity scatter plot” on MongoDB Charts, specifically looking at SATA/SSD
-Real erasure rates are less than advertised
 
