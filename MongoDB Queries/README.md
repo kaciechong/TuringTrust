@@ -40,8 +40,8 @@
      - Read-up: 31.64 GB/min
    - **Model**: [MongoDB Charts](https://charts.mongodb.com/charts-project-0-beoqpwb/dashboards/66ed6f58-5025-4323-87af-e63522a514c5/charts/e3607c90-2655-4847-800e-0840140d5fcc)
 
-### 5. `erasure_time_vs_capacity_for_success.ipynb`
-   - **Purpose**: To find the erasure rate (gb/minute) for each interface type, while also being able to look at each drive individually through the disk's serial number and model of only successfully wiped devices. Through this, we can see if the slow rates in SATA/SSD drives are due to outliers or not (in reference to query 4).
+### 5. `erasure_rate_for_SATA/SSD.ipynb`
+   - **Purpose**: To find the erasure rate (gb/minute) of individual drives with interface type SATA/SSD; the goal is to see the disk's serial number and model of successfully wiped devices on a scatter plot to observe if the slow rates in SATA/SSD drives are due to outliers (in reference to query 4).
    - **Findings**: 
    - **Further Investigation**: 
    - **Model**: [MongoDB Charts]()
