@@ -42,16 +42,12 @@
 
 ### 5. `erasure_rate_for_SATA/SSD.ipynb`
    - **Purpose**: To find the erasure rate (gb/minute) of individual drives with interface type SATA/SSD; the goal is to see the disk's serial number and model of successfully wiped devices on a scatter plot to observe if the slow rates in SATA/SSD drives are due to outliers (in reference to query 4).
-   - **Findings**: 
-   - **Further Investigation**: 
-   - **Model**: [MongoDB Charts]()
+   - **Findings**: Real-world erasure rates for SATA/SSD drives are notably lower than the manufacturer’s advertised speeds:
+Hardware specifications because most of the points on the scatter plot are clustered below 20 GB/min.
+   - **Reccomendations**: 
+      - Investigate Further: Conduct a deeper analysis of the factors contributing to the lower erasure rates.
+      - Review Hardware Specifications: Examine the hardware specifications to identify any limitations that may affect performance.
+      - Develop Test Rig: Create a dedicated testing setup to evaluate the erasure performance of different drives under controlled conditions. This rig should allow for consistent testing across various hardware and software configurations to identify optimal setups.
+      - Contact Blancco’s support team to discuss the findings and seek their expertise on optimizing erasure processes. Provide them with data from the tests, and ask for recommendations on best practices or potential software updates that could enhance performance.
+   - **Model**: [MongoDB Charts](https://charts.mongodb.com/charts-project-0-beoqpwb/dashboards/66ed6f58-5025-4323-87af-e63522a514c5/charts/32e79b80-4177-42f7-bf47-d25819bc1b2b)
      
-Comparative Results: Real-world erasure rates for SATA drives are notably lower than the manufacturer’s advertised speeds:
-Hardware specifications.
-Development of a test rig to replicate conditions.
-Supporting ticket submissions to Blancco for additional insights.
-Visualization and Documentation
-Use MongoDB Charts to create scatter plots and box plots for visual representation of the erasure times versus capacity for different interface types.
-Review the "Erasure Time vs Capacity" scatter plot in MongoDB Charts specifically for SATA/SSD drives to better understand performance trends and anomalies.
-Insight: When we look at specific examples of SATA/SSD, write speed is substantially lower than the manufacturer’s advertised write speed → recommendation: investigate that further because we can speed up → delve into hardware specs, develop test rid, support ticket with Blancco
-
