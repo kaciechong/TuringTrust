@@ -16,7 +16,6 @@
       2. Collaborate with Blancco to address the glitch issue. Ensure that all known bugs, especially those involving overlapping wipe times or missing objects, are fixed.
       3. Implement automated checks within Blancco or a separate monitoring tool to detect potential duplicate wipes or data discrepancies in real time.
       4. Investigate the frequency of overlapping wipe times for the same erasure serial. This could reveal if the issue is widespread and provide insights into patterns or recurring events, such as specific times of day or hardware types, that contribute to the issue.
-   - **Model**: [Jupyter Notebooks -- add](add link)
 
 ### 2. `average_speed_of_successful_wipes.ipynb`
    - **Purpose**: To analyze the trend in average erasure elapsed times of successfully wiped drivesover time, specifically grouped by month, to ensure we are effectively managing and optimizing our erasure processes while also taking improved device donations over time that take less time to wipe; this ultimately improves operational efficiency.
@@ -29,7 +28,6 @@
    - **Reccomendations**:
         - Investigate Specific Months: Look into the data for specific months with unusually high average erasure times to understand what specific devices were processed with slow speeds and whether there were operational changes. 
         - Categorize Erasures by Device Type: Implement a classification system to categorize erasure data by device type, including specifications like RAM, storage capacity, and manufacturer. This will enable a more nuanced analysis of which device categories are associated with longer erasure times, allowing for targeted strategies to improve processes for specific types of devices.
-   - **Model**: [Jupyter Notebooks -- add](add link)
      
 ### 3. `long-term_average_speed_of_successful_wipes.ipynb`
    - **Purpose**: To find the long-term average erasure elapsed times of successfully wiped drives to know how much of the operational time goes toward wiping devices (related to query #2)
