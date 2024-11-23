@@ -1,9 +1,21 @@
 #  Overview: 
 ### 1. `drives_wiped_sucessfully_multiple_times.ipynb`
-   - **Purpose**: To analyze the total number of drives that have been wiped successfully more than once over time, specifically grouped by month, and assess the effectiveness of recent initiatives aimed at optimizing the drive wiping process. The intention is to minimize wasted time and effort by ensuring that workers do not spend unnecessary resources wiping devices that do not require it. By examining the trends over time, we can evaluate whether the implemented changes have had a positive impact on operational efficiency.
-   - **Hypothesis**: The number of drives wiped unnecessarily (successfully wiped more than once) will decrease over time, particularly after the implementation of new guards.
+   - **Purpose**: To analyze the monthly trends in drives wiped successfully more than once and evaluate the effectiveness of new safeguards in preventing unnecessary re-wipes. Each wipe takes up time and uses a license, so it is important to ensure previously wiped drives are not erased again, thereby improving operational efficiency.
+   - **Hypothesis**: The number of drives unnecessarily wiped (successfully wiped more than once) will decrease over time, particularly after implementing new safeguards in August 2022.
    - **Findings**: There is a **noticeable decrease over time in number of drives wiped unnecessarily**, with no month in 2024 with more than 10 drives wiped unnecessarily.
    - **Further Investigation**: Investigate if the reason there are still unnecessary wipes could likely be due to mistyping the asset ID – when an asset ID is mistyped, it must be re-erased.
+      - To address the remaining instances in recent months after the implementation of the safeguards of       unnecessary wipes, I investigated whether mistyped asset IDs are a contributing factor. Mistyping         asset IDs often necessitates re-erasure, and addressing this issue could further reduce                   inefficiencies.
+      - Asset ID Analysis: I manually reviewed the reports for each of the 54 disk serials, checking the        associated asset IDs to determine if mistyped asset IDs were the cause
+         1. 9/54 devices (16.6%) were identified as having asset IDs that differed by 1-2 characters,    
+            suggesting mistyping.
+         2. 16/54 devices (29.6%) had completely different asset IDs, often linked to the same vendor,                disk serial, and interface type. These are cases when a single serial number is associated                with multiple asset IDs.
+         3. 27/54 devices (50%), the same asset ID and erasure details were found. However, some reports              with the same erasure details showed overlapping wipe times, indicating a **Blancco software              glitch**.
+         4. 2/54 devices (3.7%) had no asset ID recorded (e.g. IPAD).
+   - **Reccomendations**:
+      1. The potential recommendation to increase the size of asset IDs to prevent mis-typing is unnecessary, as only ~16% of the cases involved mistyped asset IDs.
+      2. Collaborate with Blancco to address the glitch issue. Ensure that all known bugs, especially those involving overlapping wipe times or missing objects, are fixed.
+      3. Implement automated checks within Blancco or a separate monitoring tool to detect potential duplicate wipes or data discrepancies in real time.
+      4. Investigate the frequency of overlapping wipe times for the same erasure serial. This could reveal if the issue is widespread and provide insights into patterns or recurring events, such as specific times of day or hardware types, that contribute to the issue.
    - **Model**: [Jupyter Notebooks -- add](add link)
 
 ### 2. `average_speed_of_successful_wipes.ipynb`
