@@ -34,17 +34,12 @@
    - **Findings**: Across all months, it takes an average of **1 hour and 16 minutes** to successfully wipe a drive.
 
 ### 4. `RAM_trends.ipynb`
-   - **Purpose**: To analyze the trend in average erasure elapsed times of successfully wiped drivesover time, specifically grouped by month, to ensure we are effectively managing and optimizing our erasure processes while also taking improved device donations over time that take less time to wipe; this ultimately improves operational efficiency.
-   - **Hypothesis**: The erasure times are decreasing over time due to newer device donations which take less time to wipe.
-   - **Findings**: There is some fluctuation in the average times, with notable peaks and valleys; however, there is **no downward trend**.
-      - Notes:
-           - The average erasure time recorded in December 2021 was just 13 seconds. This unusually low time can be attributed to it being a testing period during which only one device was wiped, resulting in this specific measurement.
-           - Noticeable peaks in September, Novemeber 2022 and July, October 2023 - possible problematic devices or more complex erasure processes involved in those months
-           - Prediction: The introduction of more complex devices alongside simpler ones could lead to higher average times, as newer devices may require specific handling or longer processes.
+   - **Purpose**: To analyze RAM types of wiped devices, specifically grouped by month to see the trend over time, to ensure we are effectively managing device donations that have newer RAM types. The goal is to ensure that devices with newer and more advanced RAM types are prioritized when receiving donations. By tracking RAM types, you can ensure that your device donation program remains aligned with the latest technology trends, helping to provide recipients with more capable and future-proof devices.
+   - **Hypothesis**: Never memory types (DDR3 and DDR4) are increasing while older memory types (DDR and DDR2) are decreasing over time.  
+   - **Findings**: DDR and DDR2 memory types have seen a significant decline, becoming essentially obsolete by August 2024.
+DDR3 and DDR4 remain the most common memory types in use, with both showing upward trends. While DDR3 has historically been the most common, DDR4 is steadily increasing in prevalence and is expected to continue growing.
    - **Reccomendations**:
-        - Investigate Specific Months: Look into the data for specific months with unusually high average erasure times to understand what specific devices were processed with slow speeds and whether there were operational changes. 
-        - Categorize Erasures by Device Type: Implement a classification system to categorize erasure data by device type, including specifications like RAM, storage capacity, and manufacturer. This will enable a more nuanced analysis of which device categories are associated with longer erasure times, a
-
+        - Future analyses should consider incorporating Salesforce data to more accurately track memory type trends based on the actual donation dates. This approach will help ensure that devices with newer RAM types are prioritized in the donation process, leading to better decision-making and optimization of device donations.
 
 UPDATE FROM HERE 
 
