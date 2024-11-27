@@ -59,6 +59,8 @@ DDR3 and DDR4 remain the most common memory types in use, with both showing upwa
      - For each interface type, the 1st quartile (Q1) and the 3rd quartile (Q3) were calculated.
      - The IQR was computed as the difference between Q3 and Q1, and outliers were defined as values outside the range [Q1 - 1.5 * IQR, Q3 + 1.5 * IQR].
      - The seaborn library was used to create the boxplot to visualize the distribution of data, including medians, quartiles, and potential outliers.
+   - **Key Findings**:
+      - 
 
 HERE:
    - The average erasure rate for **SATA/SSD** is substantially lower than the manufacturer’s advertised write speed. Investigate further if the slow rates are due to outliers by creating a scatter plot that looks at each drive individually; We can observe the scatter plot to see if most SATA/SSD data points are actually clustered at lower rates
