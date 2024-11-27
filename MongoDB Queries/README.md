@@ -41,24 +41,33 @@ DDR3 and DDR4 remain the most common memory types in use, with both showing upwa
    - **Reccomendations**:
         - Future analyses should consider incorporating Salesforce data to more accurately track memory type trends based on the actual donation dates. This approach will help ensure that devices with newer RAM types are prioritized in the donation process, leading to better decision-making and optimization of device donations.
 
-### 4. `erasure_rate_by_interface_success.ipynb`
+### 5. `erasure_rate_by_interface_success.ipynb`
    - **Purpose**: To calculate the average erasure rate (GB per minute) of successfully wiped drives for each interface type, identifying which interface types have the most efficient erasure times. This analysis will enable the Turing Trust to prioritize acquiring devices with faster erasure capabilities, improving overall operational efficiency. Additionally, providing accurate erasure speed estimates based on interface type will enhance customer service by offering realistic timelines for secure data erasure services, catering to customer demands for reliable and prompt processing.
    - **Findings**:
-     - NVMe drives exhibit a significantly higher average erasure rate (about 110 GB/min), making them the fastest option by a large margin.
-     - SAS drives have the second-highest erasure rate, though it is much lower than NVMe.
-     - SATA, USB, and SSD interfaces (e.g., SATA/SSD) show relatively low erasure rates. For example, SATA drives are barely above USB and IDE in speed. These interfaces are not ideal for high-speed operations and could be de-prioritized in tasks where faster completion is a priority.
+     - NVMe drives exhibit a significantly higher average erasure rate of 107.10 gb/min than all of the other interface types, making them the fastest option by a large margin
+     - Although SAS drives, with a rate of 10.73 gb/min, have the second-highest erasure rate, their performance is still significantly slower than NVMe drives. Their erasure rates are closer to those of the other interface types, which fall within a similar range: SAS/SSD = 7.67 gb/min, SPI = 7.34 gb/min, SATA = 6.25 gb/min,  USB/SSD = 5.68 gb/min, SATA/SSD = 5.18 gb/min, SATA/SSHD = 4.17 gb/min, EMMC = 4.01 gb/min,  IDE = 1.92 gb/min, USB = 0.34 gb/min
    - **Recommendations**:
      - Prioritize NVMe and SAS Drives: Focus on these high-throughput drives during peak operational times for faster turnaround.
      - Infrastructure for High-Speed Interfaces: Invest in equipment specifically optimized for NVMe and SAS drives to fully utilize their higher erasure rates.
      - Consider whether it’s cost-effective to continue handling extremely slow interfaces like IDE and USB
-   - **Further Investigation**: The average erasure rate for **SATA/SSD** is substantially lower than the manufacturer’s advertised write speed. Investigate further if the slow rates are due to outliers by creating a scatter plot that looks at each drive individually; We can observe the scatter plot to see if most SATA/SSD data points are actually clustered at lower rates
+
+### 6. **Further Investigation of Previous Query**: `Distribution_of_rates.ipynb`
+   - **Purpose**: By creating a box-and-whisker plot for each interface type, we can observe the variability between interface types and the difference in central tendency.
+   - **Box & Whisker Plot Development**:
+     - Create a data frame for easier data manipulation and simplifies grouping and aggregation.
+     - Handling Outliers: The Interquartile Range (IQR) method was applied to identify and remove outliers for each interface type for better visualization.
+     - For each interface type, the 1st quartile (Q1) and the 3rd quartile (Q3) were calculated.
+     - The IQR was computed as the difference between Q3 and Q1, and outliers were defined as values outside the range [Q1 - 1.5 * IQR, Q3 + 1.5 * IQR].
+     - The seaborn library was used to create the boxplot to visualize the distribution of data, including medians, quartiles, and potential outliers.
+
+HERE:
+   - The average erasure rate for **SATA/SSD** is substantially lower than the manufacturer’s advertised write speed. Investigate further if the slow rates are due to outliers by creating a scatter plot that looks at each drive individually; We can observe the scatter plot to see if most SATA/SSD data points are actually clustered at lower rates
    - Real Average for SATA/SSD: 5.188 GB/min
    - Advertised:
      - Write-up: 19.92 GB/min
      - Read-up: 31.64 GB/min
-   - **Model**: [MongoDB Charts](https://charts.mongodb.com/charts-project-0-beoqpwb/dashboards/66ed6f58-5025-4323-87af-e63522a514c5/charts/e3607c90-2655-4847-800e-0840140d5fcc)
 
-### 5. `erasure_rate_for_SATA/SSD.ipynb`
+### 6. `erasure_rate_for_SATA/SSD.ipynb`
    - **Purpose**: To find the erasure rate (gb/minute) of individual drives with interface type SATA/SSD; the goal is to see the disk's serial number and model of successfully wiped devices on a scatter plot to observe if the slow rates in SATA/SSD drives are due to outliers (in reference to query 4).
    - **Findings**: Real-world erasure rates for SATA/SSD drives are notably lower than the manufacturer’s advertised speeds:
 Hardware specifications because most of the points on the scatter plot are clustered below 20 GB/min.
