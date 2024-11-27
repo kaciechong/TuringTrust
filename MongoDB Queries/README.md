@@ -41,10 +41,8 @@ DDR3 and DDR4 remain the most common memory types in use, with both showing upwa
    - **Reccomendations**:
         - Future analyses should consider incorporating Salesforce data to more accurately track memory type trends based on the actual donation dates. This approach will help ensure that devices with newer RAM types are prioritized in the donation process, leading to better decision-making and optimization of device donations.
 
-UPDATE FROM HERE 
-
 ### 4. `erasure_rate_by_interface_success.ipynb`
-   - **Purpose**: To find the average erasure rate (gb/minute) for each interface type to find which interface types have the most efficient erasure times.
+   - **Purpose**: To calculate the average erasure rate (GB per minute) of successfully wiped drives for each interface type, identifying which interface types have the most efficient erasure times. This analysis will enable the Turing Trust to prioritize acquiring devices with faster erasure capabilities, improving overall operational efficiency. Additionally, providing accurate erasure speed estimates based on interface type will enhance customer service by offering realistic timelines for secure data erasure services, catering to customer demands for reliable and prompt processing.
    - **Findings**:
      - NVMe drives exhibit a significantly higher average erasure rate (about 110 GB/min), making them the fastest option by a large margin.
      - SAS drives have the second-highest erasure rate, though it is much lower than NVMe.
