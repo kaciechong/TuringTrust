@@ -66,7 +66,8 @@ DDR3 and DDR4 remain the most common memory types in use, with both showing upwa
       - SPI stands out for its remarkable consistency, with erasure rates tightly clustered around ~7 GB/min. The lack of variability suggests it delivers steady but moderate performance.
 
 HERE
-### 7. `erasure_rate_by_interface_success.ipynb`
-   - **Purpose**: To calculate the average erasure rate (GB per minute) of successfully wiped drives for each interface type, identifying which interface types have the most efficient erasure times. This analysis will enable the Turing Trust to prioritize acquiring devices with faster erasure capabilities, improving overall operational efficiency. Additionally, providing accurate erasure speed estimates based on interface type will enhance customer service by offering realistic timelines for secure data erasure services, catering to customer demands for reliable and prompt processing.
+### 7. `rig_faster?.ipynb`
+   - **Purpose**: To determine whether wiping devices on the rig is generally faster than wiping them directly on the device. This will help us assess if it would be more efficient to wipe all devices on the rig instead.
+   - **Hypothesis**: Wiping on the rig will, in most cases, be faster and will show a significant reduction in time compared to wiping on the device.
    - **Findings**:
      - NVMe drives exhibit a s
