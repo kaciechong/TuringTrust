@@ -65,8 +65,16 @@ DDR3 and DDR4 remain the most common memory types in use, with both showing upwa
       - USB shows low erasure rates with very little variability. Its overall performance remains consistently at the lower end of the spectrum.
       - SPI stands out for its remarkable consistency, with erasure rates tightly clustered around ~7 GB/min. The lack of variability suggests it delivers steady but moderate performance.
 
-HERE
-### 7. `rig_faster?.ipynb`
+### 7. `rig_faster.ipynb`
+   - **Purpose**: To determine whether wiping devices on the rig is generally faster than wiping them directly on the device. This will help us assess if it would be more efficient to wipe all devices on the rig instead.
+   - **Hypothesis**: Wiping on the rig will, in most cases, be faster and will show a significant reduction in time compared to wiping on the device.
+   - **Findings**:
+     - Out of 61 devices wiped successfully on both the rig and the device:
+     - The rig is faster 34 times, while the device is faster 27 times.
+     - Positive values (device faster) occur relatively frequently, showing that the device often outpaces the rig in wiping speed.
+     - The average wipe time difference is -103.19 seconds, meaning that, on average, wiping on the device takes approximately 103.19 seconds less than wiping on the rig. This result disproves the hypothesis that the rig is generally faster than the device in terms of wipe time.
+    
+### 8. `Exploring the fatality of erasure messages .ipynb`
    - **Purpose**: To determine whether wiping devices on the rig is generally faster than wiping them directly on the device. This will help us assess if it would be more efficient to wipe all devices on the rig instead.
    - **Hypothesis**: Wiping on the rig will, in most cases, be faster and will show a significant reduction in time compared to wiping on the device.
    - **Findings**:
