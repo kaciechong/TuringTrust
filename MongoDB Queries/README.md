@@ -46,10 +46,6 @@ DDR3 and DDR4 remain the most common memory types in use, with both showing upwa
    - **Findings**:
      - NVMe drives exhibit a significantly higher average erasure rate of 107.10 gb/min than all of the other interface types, making them the fastest option by a large margin
      - Although SAS drives, with a rate of 10.73 gb/min, have the second-highest erasure rate, their performance is still significantly slower than NVMe drives. Their erasure rates are closer to those of the other interface types, which fall within a similar range: SAS/SSD = 7.67 gb/min, SPI = 7.34 gb/min, SATA = 6.25 gb/min,  USB/SSD = 5.68 gb/min, SATA/SSD = 5.18 gb/min, SATA/SSHD = 4.17 gb/min, EMMC = 4.01 gb/min,  IDE = 1.92 gb/min, USB = 0.34 gb/min
-   - **Recommendations**:
-     - Prioritize NVMe and SAS Drives: Focus on these high-throughput drives during peak operational times for faster turnaround.
-     - Infrastructure for High-Speed Interfaces: Invest in equipment specifically optimized for NVMe and SAS drives to fully utilize their higher erasure rates.
-     - Consider whether it’s cost-effective to continue handling extremely slow interfaces like IDE and USB
 
 ### 6. **Further Investigation of Previous Query**: `Distribution_of_rates.ipynb`
    - **Purpose**: By creating a box-and-whisker plot for each interface type, we can observe the variability between interface types and the difference in central tendency.
@@ -60,23 +56,17 @@ DDR3 and DDR4 remain the most common memory types in use, with both showing upwa
      - The IQR was computed as the difference between Q3 and Q1, and outliers were defined as values outside the range [Q1 - 1.5 * IQR, Q3 + 1.5 * IQR].
      - The seaborn library was used to create the boxplot to visualize the distribution of data, including medians, quartiles, and potential outliers.
    - **Key Findings**:
-      - 
+      - NVMe actually appears to have a similar erasure rate to other high-performing interface types when considering its median value. However, it is highly variable due to extreme outliers, skewing its average rate higher than it might realistically be for most cases.
+      - SAS/SSD shows the highest erasure rates overall, with the largest maximum and median rates. It has higher variability, but this variability is generally within high-performance ranges.
+      - USB/SSD has a unique distribution: the upper quartile is particularly high, with 25% of data exceeding ~10 GB/min, showing that USB/SSD can achieve high speeds in some instances. However, the median rate (~2.5 GB/min) is much lower, suggesting that typical performance is significantly slower.
+      - IDE contains a few low-performing outliers, which reinforce its already slow and narrow erasure rate distribution.
+      - SAS has a median erasure rate similar to NVMe but shows less variability. It achieves higher minimum rates compared to NVMe but a lower maximum, indicating a more consistent but slightly less extreme performance compared to SAS/SSD.
+      - SATA/SSD displays a susceptibility to outliers, often skewing its erasure rates, and its overall performance tends to be on the lower side compared to NVMe or SAS/SSD, with a narrower distribution and lower maximum values.
+      - USB shows low erasure rates with very little variability. Its overall performance remains consistently at the lower end of the spectrum.
+      - SPI stands out for its remarkable consistency, with erasure rates tightly clustered around ~7 GB/min. The lack of variability suggests it delivers steady but moderate performance.
 
-HERE:
-   - The average erasure rate for **SATA/SSD** is substantially lower than the manufacturer’s advertised write speed. Investigate further if the slow rates are due to outliers by creating a scatter plot that looks at each drive individually; We can observe the scatter plot to see if most SATA/SSD data points are actually clustered at lower rates
-   - Real Average for SATA/SSD: 5.188 GB/min
-   - Advertised:
-     - Write-up: 19.92 GB/min
-     - Read-up: 31.64 GB/min
-
-### 6. `erasure_rate_for_SATA/SSD.ipynb`
-   - **Purpose**: To find the erasure rate (gb/minute) of individual drives with interface type SATA/SSD; the goal is to see the disk's serial number and model of successfully wiped devices on a scatter plot to observe if the slow rates in SATA/SSD drives are due to outliers (in reference to query 4).
-   - **Findings**: Real-world erasure rates for SATA/SSD drives are notably lower than the manufacturer’s advertised speeds:
-Hardware specifications because most of the points on the scatter plot are clustered below 20 GB/min.
-   - **Reccomendations**: 
-      - Investigate Further: Conduct a deeper analysis of the factors contributing to the lower erasure rates.
-      - Review Hardware Specifications: Examine the hardware specifications to identify any limitations that may affect performance.
-      - Develop Test Rig: Create a dedicated testing setup to evaluate the erasure performance of different drives under controlled conditions. This rig should allow for consistent testing across various hardware and software configurations to identify optimal setups.
-      - Contact Blancco’s support team to discuss the findings and seek their expertise on optimizing erasure processes. Provide them with data from the tests, and ask for recommendations on best practices or potential software updates that could enhance performance.
-   - **Model**: [MongoDB Charts](https://charts.mongodb.com/charts-project-0-beoqpwb/dashboards/66ed6f58-5025-4323-87af-e63522a514c5/charts/32e79b80-4177-42f7-bf47-d25819bc1b2b)
-     
+HERE
+### 7. `erasure_rate_by_interface_success.ipynb`
+   - **Purpose**: To calculate the average erasure rate (GB per minute) of successfully wiped drives for each interface type, identifying which interface types have the most efficient erasure times. This analysis will enable the Turing Trust to prioritize acquiring devices with faster erasure capabilities, improving overall operational efficiency. Additionally, providing accurate erasure speed estimates based on interface type will enhance customer service by offering realistic timelines for secure data erasure services, catering to customer demands for reliable and prompt processing.
+   - **Findings**:
+     - NVMe drives exhibit a s
