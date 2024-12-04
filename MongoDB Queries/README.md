@@ -55,7 +55,7 @@ DDR3 and DDR4 remain the most common memory types in use, with both showing upwa
      - For each interface type, the 1st quartile (Q1) and the 3rd quartile (Q3) were calculated.
      - The IQR was computed as the difference between Q3 and Q1, and outliers were defined as values outside the range [Q1 - 1.5 * IQR, Q3 + 1.5 * IQR].
      - The seaborn library was used to create the boxplot to visualize the distribution of data, including medians, quartiles, and potential outliers.
-   - **Key Findings**:
+   - **Findings**:
       - NVMe actually appears to have a similar erasure rate to other high-performing interface types when considering its median value. However, it is highly variable due to extreme outliers, skewing its average rate higher than it might realistically be for most cases.
       - SAS/SSD shows the highest erasure rates overall, with the largest maximum and median rates. It has higher variability, but this variability is generally within high-performance ranges.
       - USB/SSD has a unique distribution: the upper quartile is particularly high, with 25% of data exceeding ~10 GB/min, showing that USB/SSD can achieve high speeds in some instances. However, the median rate (~2.5 GB/min) is much lower, suggesting that typical performance is significantly slower.
@@ -74,8 +74,10 @@ DDR3 and DDR4 remain the most common memory types in use, with both showing upwa
      - Positive values (device faster) occur relatively frequently, showing that the device often outpaces the rig in wiping speed.
      - The average wipe time difference is -103.19 seconds, meaning that, on average, wiping on the device takes approximately 103.19 seconds less than wiping on the rig. This result disproves the hypothesis that the rig is generally faster than the device in terms of wipe time.
     
-### 8. `Exploring the fatality of erasure messages .ipynb`
-   - **Purpose**: To determine whether wiping devices on the rig is generally faster than wiping them directly on the device. This will help us assess if it would be more efficient to wipe all devices on the rig instead.
-   - **Hypothesis**: Wiping on the rig will, in most cases, be faster and will show a significant reduction in time compared to wiping on the device.
+### 8. `dataframe_with_rigwipemessage.ipynb` + `Analyzing_dataframe.ipynb`
+   - **Purpose**: To identify the significance of specific erasure failure messages and assess their impact on the probability of achieving a successful wipe on the rig; we want to see how fatal erasure messages are after a device wipe to see if it is worth taking the time to wipe it on the rig.
    - **Findings**:
-     - NVMe drives exhibit a s
+     - Look at the last data frame in 'Analyzing_dataframe' file to see the failure rates for each failure message:
+     - Messages to Scrap (Above 50% Failure Rate): Messages with a failure rate above 50% (indicated by those above the red line) suggest that the rig wipe is highly likely to fail. These failure messages should be considered for scrapping as the chances of success are low.
+     - However, it's crucial to understand the context of each failure message before deciding to scrap it. For example, while the message “Read errors count reaches or exceeds the configured threshold” has a failure rate of 54%, it also indicates that the drive is unhealthy.
+     - Messages Not to Scrap (Below 50% Failure Rate): Messages with a failure rate below 50% (below the red line) are generally more promising, with a higher chance of a successful wipe on the rig. These messages indicate that the wipe could still succeed and are worth further investigation.
